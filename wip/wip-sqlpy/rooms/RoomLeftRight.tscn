@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8m7pvpwpp660"]
+[gd_scene load_steps=7 format=3 uid="uid://b8m7pvpwpp660"]
 
 [ext_resource type="Script" uid="uid://cl3fw06tcr1qn" path="res://wip/wip-sqlpy/room_blueprint.gd" id="1_ja5ey"]
 [ext_resource type="Script" uid="uid://bocdn4qwskfkd" path="res://wip/wip-sqlpy/roomDoor.gd" id="2_v6htv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yioe4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja5ey"]
+size = Vector2(1160, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6htv"]
 size = Vector2(1160, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dj0kg"]
@@ -21,14 +24,14 @@ script = ExtResource("1_ja5ey")
 position = Vector2(574, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Roof"]
-position = Vector2(2.125, 0)
-shape = SubResource("RectangleShape2D_yioe4")
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_ja5ey")
 
 [node name="Floor" type="StaticBody2D" parent="Walls"]
 position = Vector2(576, 648)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Floor"]
-shape = SubResource("RectangleShape2D_yioe4")
+shape = SubResource("RectangleShape2D_v6htv")
 
 [node name="LeftWall" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 324)
@@ -66,7 +69,6 @@ shape = SubResource("RectangleShape2D_yi1sg")
 debug_color = Color(0, 0.649083, 0.157916, 0.42)
 
 [node name="CameraTarget" type="Marker2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(572, 322)
 
 [node name="CameraBounds" type="ReferenceRect" parent="."]

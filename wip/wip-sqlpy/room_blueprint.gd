@@ -1,7 +1,6 @@
 class_name TowerRoom
 extends Node2D
 
-
 @export var camera_static : bool = true
 @export var start_room : bool = false
 @export_category("Connections")
@@ -33,10 +32,11 @@ func _ready() -> void:
 			left_room_door = child
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	_check_room_transition()
 	if not camera_static:
 		_adjust_camera_target()
+		
 
 func _check_room_transition() -> void:
 	var player : Node2D = GlobalVars.player

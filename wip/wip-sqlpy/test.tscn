@@ -1,12 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdepnecknw6xy"]
+[gd_scene load_steps=18 format=3 uid="uid://bdepnecknw6xy"]
 
 [ext_resource type="PackedScene" uid="uid://xvme4orw3dne" path="res://wip/wip-hagen/rigidbody_controller/cat_rb.tscn" id="1_8emrc"]
 [ext_resource type="Script" uid="uid://fi5jmhmr360j" path="res://wip/wip-sqlpy/room_controller.gd" id="1_8rhle"]
+[ext_resource type="Script" uid="uid://cl3fw06tcr1qn" path="res://wip/wip-sqlpy/room_blueprint.gd" id="2_cwpsk"]
+[ext_resource type="Script" uid="uid://bocdn4qwskfkd" path="res://wip/wip-sqlpy/roomDoor.gd" id="3_a5hi8"]
 [ext_resource type="Script" uid="uid://c8at4g422rwiy" path="res://wip/wip-sqlpy/Attachments/falls_down_shelves.gd" id="3_lg24v"]
 [ext_resource type="PackedScene" uid="uid://q1uhafm88t8s" path="res://wip/wip-sqlpy/rooms/RoomLeftUp.tscn" id="4_7u8o0"]
 [ext_resource type="Script" uid="uid://craf068s6fswb" path="res://wip/wip-sqlpy/CameraScript.gd" id="4_8rhle"]
 [ext_resource type="PackedScene" uid="uid://b8m7pvpwpp660" path="res://wip/wip-sqlpy/rooms/RoomLeftRight.tscn" id="5_8rhle"]
 [ext_resource type="PackedScene" uid="uid://f6kxdw8vp3i" path="res://wip/wip-sqlpy/rooms/RoomLeftDown.tscn" id="6_dfg4j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e237u"]
+size = Vector2(2313, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx3ky"]
+size = Vector2(2314, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dj0kg"]
+size = Vector2(8, 556)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yi1sg"]
+size = Vector2(32, 92)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8emrc"]
 friction = 0.07
@@ -31,13 +45,87 @@ position = Vector2(-1152, 0)
 
 [node name="Floor0" type="Node2D" parent="Tower"]
 
-[node name="RoomLeftRight" parent="Tower/Floor0" node_paths=PackedStringArray("left_room") instance=ExtResource("5_8rhle")]
+[node name="RoomLeftRight" type="Node2D" parent="Tower/Floor0" node_paths=PackedStringArray("left_room")]
 position = Vector2(1152, 0)
+script = ExtResource("2_cwpsk")
+camera_static = false
 start_room = true
 left_room = NodePath("../RoomLeftDown")
 
-[node name="RoomLeftDown" parent="Tower/Floor0" node_paths=PackedStringArray("right_room", "down_room") instance=ExtResource("6_dfg4j")]
+[node name="Walls" type="Node2D" parent="Tower/Floor0/RoomLeftRight"]
+
+[node name="Roof" type="StaticBody2D" parent="Tower/Floor0/RoomLeftRight/Walls"]
+position = Vector2(574, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower/Floor0/RoomLeftRight/Walls/Roof"]
+position = Vector2(578.5, 0)
+shape = SubResource("RectangleShape2D_e237u")
+
+[node name="Floor" type="StaticBody2D" parent="Tower/Floor0/RoomLeftRight/Walls"]
+position = Vector2(576, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower/Floor0/RoomLeftRight/Walls/Floor"]
+position = Vector2(577, 0)
+shape = SubResource("RectangleShape2D_rx3ky")
+
+[node name="LeftWall" type="StaticBody2D" parent="Tower/Floor0/RoomLeftRight/Walls"]
+position = Vector2(0, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower/Floor0/RoomLeftRight/Walls/LeftWall"]
+position = Vector2(0, -50)
+shape = SubResource("RectangleShape2D_dj0kg")
+
+[node name="RightWall" type="StaticBody2D" parent="Tower/Floor0/RoomLeftRight/Walls"]
+position = Vector2(2305, 274)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower/Floor0/RoomLeftRight/Walls/RightWall"]
+shape = SubResource("RectangleShape2D_dj0kg")
+
+[node name="LeftRoomDoor" type="Area2D" parent="Tower/Floor0/RoomLeftRight"]
+position = Vector2(-16, 598)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("3_a5hi8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower/Floor0/RoomLeftRight/LeftRoomDoor"]
+shape = SubResource("RectangleShape2D_yi1sg")
+debug_color = Color(0, 0.649083, 0.157916, 0.42)
+
+[node name="RightRoomDoor" type="Area2D" parent="Tower/Floor0/RoomLeftRight"]
+position = Vector2(2321, 598)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("3_a5hi8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower/Floor0/RoomLeftRight/RightRoomDoor"]
+shape = SubResource("RectangleShape2D_yi1sg")
+debug_color = Color(0, 0.649083, 0.157916, 0.42)
+
+[node name="CameraTarget" type="Marker2D" parent="Tower/Floor0/RoomLeftRight"]
+position = Vector2(572, 322)
+
+[node name="CameraBounds" type="ReferenceRect" parent="Tower/Floor0/RoomLeftRight"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 572.0
+offset_top = 322.0
+offset_right = 1736.0
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+border_width = 5.0
+
+[node name="RoomLeftDown" parent="Tower/Floor0" node_paths=PackedStringArray("right_room", "up_room", "down_room") instance=ExtResource("6_dfg4j")]
 right_room = NodePath("../RoomLeftRight")
+up_room = NodePath("../../Floor1/RoomLeftUp")
 down_room = NodePath("../../Floor1/RoomLeftUp")
 
 [node name="Floor1" type="Node2D" parent="Tower"]
@@ -111,3 +199,4 @@ rotation_required = 20.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(587, 319)
 script = ExtResource("4_8rhle")
+convergence_speed = 16.0

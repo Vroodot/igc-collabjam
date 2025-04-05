@@ -76,7 +76,6 @@ shape = SubResource("RectangleShape2D_gkr8y")
 debug_color = Color(0, 0.649083, 0.157916, 0.42)
 
 [node name="CameraTarget" type="Marker2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(572, 322)
 
 [node name="CameraBounds" type="ReferenceRect" parent="."]
