@@ -33,8 +33,14 @@ func _physics_process(delta: float) -> void:
 			cat_sprite.flip_h = true
 		else:
 			cat_sprite.flip_h = false
-	push_force = velocity
+	_push_rigid_bodies()
+
+func _push_rigid_bodies() -> void:
 	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * push_force * mass)
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider is RigidBody2D:
+			var normal = collision.get_normal()
+			var push_strength = max(-velocity.dot(normal), 1) * push_force 
+			var force = -normal * push_strength
+			collider.apply_central_force(force)

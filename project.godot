@@ -41,7 +41,8 @@ folder_colors={
 "res://main/GameTemplate/scenes/game_scene/": "green",
 "res://main/GameTemplate/scenes/menus/main_menu/": "green",
 "res://wip/": "orange",
-"res://wip/wip-staging/Tower/": "yellow"
+"res://wip/wip-staging/Tower/": "yellow",
+"res://wip/wip-staging/rigidbody-attachments/": "green"
 }
 
 [input]

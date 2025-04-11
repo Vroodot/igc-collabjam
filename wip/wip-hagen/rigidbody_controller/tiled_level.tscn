@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dircc24njwqwo" path="res://wip/wip-sqlpy/test_break_object.gd" id="4_0m2vc"]
 [ext_resource type="Texture2D" uid="uid://jlsm78dmnvw2" path="res://wip/wip-hagen/assets/IMG_cabinet_001.png" id="5_2w7jk"]
 [ext_resource type="Script" uid="uid://7suowjyr8422" path="res://wip/wip-sqlpy/Attachments/breaks_on_impact.gd" id="5_41u6t"]
-[ext_resource type="Script" uid="uid://c8at4g422rwiy" path="res://wip/wip-sqlpy/Attachments/falls_down_shelves.gd" id="6_ahyat"]
+[ext_resource type="Script" uid="uid://c8at4g422rwiy" path="res://wip/wip-staging/rigidbody-attachments/falls_down_shelves.gd" id="6_ahyat"]
 [ext_resource type="Texture2D" uid="uid://mdmf0buts58i" path="res://wip/wip-hagen/rigidbody_controller/Tiles/Prototype_Tileset_16x16.png" id="7_mfgde"]
 [ext_resource type="Texture2D" uid="uid://jkeldnlsy6a2" path="res://wip/wip-hagen/assets/IMG_floor_001.png" id="9_jg2eh"]
 [ext_resource type="Texture2D" uid="uid://6bp5uddqkm03" path="res://wip/wip-hagen/assets/IMG_shelf_001.png" id="10_eirfj"]

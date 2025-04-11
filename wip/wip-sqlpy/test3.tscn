@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://lnnaei5eulki"]
 
-[ext_resource type="Script" uid="uid://b1wqkt6g2je8g" path="res://wip/wip-sqlpy/Attachments/softly_pinned_object.gd" id="1_l2fyf"]
+[ext_resource type="Script" uid="uid://b1wqkt6g2je8g" path="res://wip/wip-staging/rigidbody-attachments/softly_pinned_object.gd" id="1_l2fyf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2fyf"]
 size = Vector2(140, 89)

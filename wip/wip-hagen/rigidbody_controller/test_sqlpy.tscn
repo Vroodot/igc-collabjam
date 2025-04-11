@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xvme4orw3dne" path="res://wip/wip-hagen/rigidbody_controller/cat_rb.tscn" id="7_p7pvg"]
 [ext_resource type="Script" uid="uid://dircc24njwqwo" path="res://wip/wip-sqlpy/test_break_object.gd" id="8_orfng"]
 [ext_resource type="Script" uid="uid://7suowjyr8422" path="res://wip/wip-sqlpy/Attachments/breaks_on_impact.gd" id="9_u1fic"]
-[ext_resource type="Script" uid="uid://c8at4g422rwiy" path="res://wip/wip-sqlpy/Attachments/falls_down_shelves.gd" id="10_7pios"]
+[ext_resource type="Script" uid="uid://c8at4g422rwiy" path="res://wip/wip-staging/rigidbody-attachments/falls_down_shelves.gd" id="10_7pios"]
 [ext_resource type="Script" uid="uid://craf068s6fswb" path="res://wip/wip-staging/Tower/1_TowerComponents/camera_script.gd" id="11_a3yeq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e237u"]

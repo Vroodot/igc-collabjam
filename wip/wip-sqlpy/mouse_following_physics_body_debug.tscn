@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqvn8tbymwx1l"]
+
+[ext_resource type="Script" uid="uid://dvbhftf357ha3" path="res://wip/wip-sqlpy/rigid_body_2d_2.gd" id="1_hiuh2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1gug"]
+
+[node name="RigidBody2D2" type="RigidBody2D"]
+mass = 20.0
+gravity_scale = 0.0
+linear_damp = 10.0
+script = ExtResource("1_hiuh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w1gug")

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8m7pvpwpp660" path="res://wip/wip-staging/Tower/4_Rooms/Example.tscn" id="5_8rhle"]
 [ext_resource type="PackedScene" uid="uid://cjy2xxtnnooch" path="res://wip/wip-staging/Tower/1_TowerComponents/room_door.tscn" id="5_w1gug"]
 [ext_resource type="PackedScene" uid="uid://bpesxd4i8wawp" path="res://wip/wip-sqlpy/player.tscn" id="7_7u8o0"]
-[ext_resource type="Script" uid="uid://b1wqkt6g2je8g" path="res://wip/wip-sqlpy/Attachments/softly_pinned_object.gd" id="7_w1gug"]
+[ext_resource type="Script" uid="uid://b1wqkt6g2je8g" path="res://wip/wip-staging/rigidbody-attachments/softly_pinned_object.gd" id="7_w1gug"]
 [ext_resource type="PackedScene" uid="uid://bakylihgh3gd7" path="res://wip/wip-sqlpy/rooms/RespawnRoom.tscn" id="12_rx3ky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2fyf"]
@@ -29,6 +29,7 @@ position = Vector2(1153, -719)
 camera_static = false
 
 [node name="RoomLeftRight2" parent="Tower" instance=ExtResource("5_8rhle")]
+visible = false
 position = Vector2(2305, -719)
 camera_static = false
 
@@ -60,7 +61,7 @@ convergence_speed = 16.0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(-793, -213)
-collision_mask = 5
+collision_mask = 23
 mass = 10.68
 gravity_scale = 0.0
 can_sleep = false
@@ -72,8 +73,9 @@ shape = SubResource("RectangleShape2D_l2fyf")
 
 [node name="SoftPin" type="Node" parent="RigidBody2D"]
 script = ExtResource("7_w1gug")
-lock_horizontal = true
-quadratic_stiffness = 0.3
+vertical_stiffness = 0.49
+quadratic_stiffness = 1.0
+soft_nax_distance = 20.0
 metadata/_custom_type_script = "uid://b1wqkt6g2je8g"
 
 [node name="Player" parent="." instance=ExtResource("7_7u8o0")]

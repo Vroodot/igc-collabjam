@@ -13,6 +13,10 @@ extends Node2D
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
+	if not orange_room or not green_room:
+		printerr("Door", name, " is missing at least one connection to a valid room")
+		queue_free()
+		return
 	green_area.set_target_room(green_room)
 	orange_area.set_target_room(orange_room)
 	green_room.adjacent_rooms.append(orange_room)
