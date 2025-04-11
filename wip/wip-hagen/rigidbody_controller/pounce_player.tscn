@@ -6,7 +6,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://duh6bv5c0yw72" path="res://wip/wip-hagen/rigidbody_controller/anim_lib_test.res" id="4_n8e0i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nywrp"]
-friction = 0.5
+friction = 0.4
 
 [sub_resource type="Animation" id="Animation_n8e0i"]
 length = 0.001
@@ -60,7 +60,8 @@ rotation_stabilizer = 0.1
 pounce_control_type = 6
 min_jump_charge = 0.5
 h_jump_control = 0.5
-landing_boost = 1.0
+landing_boost = 1.1
+landing_boost_duration = 0.3
 min_pounce_angle = 10.0
 def_pounce_angle = 40.0
 max_pounce_angle = 80.0
@@ -99,6 +100,16 @@ script = ExtResource("2_n8e0i")
 position = Vector2(29, 16)
 shape = SubResource("CircleShape2D_8hcsg")
 
+[node name="GroundDetectLeft" type="RayCast2D" parent="DetectionAreas"]
+unique_name_in_owner = true
+position = Vector2(-29, -4)
+target_position = Vector2(0, 62.11)
+
+[node name="GroundDetectRight" type="RayCast2D" parent="DetectionAreas"]
+unique_name_in_owner = true
+position = Vector2(29, -4)
+target_position = Vector2(0, 62.11)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
@@ -106,18 +117,3 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_vertical_offset = 0.51
 drag_top_margin = 0.4
-
-[node name="GroundDetectLeft" type="RayCast2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(-35, -1)
-target_position = Vector2(0, 62.11)
-
-[node name="GroundDetectMiddle" type="RayCast2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -1)
-target_position = Vector2(0, 62.11)
-
-[node name="GroundDetectRight" type="RayCast2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(35, -1)
-target_position = Vector2(0, 62.11)

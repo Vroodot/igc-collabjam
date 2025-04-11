@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfaolibf05gux"
-path="res://.godot/imported/Cat-2-Stretching.png-69685be8f850ccc7bef2f0722953ef9d.ctex"
+path="res://.godot/imported/Cat-2-Stretching.png-ef20ef31d5086f5c12fbe5fd65a0b298.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wip/wip-hagen/rigidbody_controller/Cat-2/Cat-2-Stretching.png"
-dest_files=["res://.godot/imported/Cat-2-Stretching.png-69685be8f850ccc7bef2f0722953ef9d.ctex"]
+source_file="res://wip/wip-hagen/rigidbody_controller/cat-2/Cat-2-Stretching.png"
+dest_files=["res://.godot/imported/Cat-2-Stretching.png-ef20ef31d5086f5c12fbe5fd65a0b298.ctex"]
 
 [params]
 

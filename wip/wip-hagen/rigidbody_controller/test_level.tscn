@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhlaobu3wtdby"]
+[gd_scene load_steps=9 format=3 uid="uid://bhlaobu3wtdby"]
 
 [ext_resource type="Texture2D" uid="uid://uxnlslitomld" path="res://assets/assets-visual/Icons/node_2D/icon_circle.png" id="1_gt0ek"]
-[ext_resource type="PackedScene" uid="uid://xvme4orw3dne" path="res://wip/wip-hagen/rigidbody_controller/cat_rb.tscn" id="2_oth3g"]
+[ext_resource type="PackedScene" uid="uid://bo1xeylmqo7xt" path="res://wip/wip-hagen/rigidbody_controller/pounce_player.tscn" id="2_oth3g"]
+[ext_resource type="PackedScene" uid="uid://cv228dvi1x0vo" path="res://wip/wip-hagen/bookshelves/magic_bookshelf.tscn" id="3_qmnt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oth3g"]
 size = Vector2(910.635, 21.18)
@@ -14,6 +15,8 @@ radius = 105.304
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oth3g"]
 bounce = 0.8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmnt2"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -348,5 +351,14 @@ texture_filter = 1
 scale = Vector2(3, 3)
 texture = ExtResource("1_gt0ek")
 
-[node name="Cat" parent="." instance=ExtResource("2_oth3g")]
-position = Vector2(431, 235)
+[node name="PouncingCat" parent="." instance=ExtResource("2_oth3g")]
+position = Vector2(378, 255)
+rotation_stabilizer = 3.0
+
+[node name="BookshelfArea" parent="." instance=ExtResource("3_qmnt2")]
+book_interval = 1.0
+book_chance = 0.5
+bookshelf_shape = SubResource("RectangleShape2D_qmnt2")
+
+[node name="@CollisionShape2D@39721" type="CollisionShape2D" parent="BookshelfArea"]
+shape = SubResource("RectangleShape2D_qmnt2")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkromrcxxsxj6"
-path="res://.godot/imported/Cat-2-Itch.png-654516298138e608d0cec8cea1cb837b.ctex"
+path="res://.godot/imported/Cat-2-Itch.png-e3fff054e0755b482c247fc5b7de9ae0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wip/wip-hagen/rigidbody_controller/Cat-2/Cat-2-Itch.png"
-dest_files=["res://.godot/imported/Cat-2-Itch.png-654516298138e608d0cec8cea1cb837b.ctex"]
+source_file="res://wip/wip-hagen/rigidbody_controller/cat-2/Cat-2-Itch.png"
+dest_files=["res://.godot/imported/Cat-2-Itch.png-e3fff054e0755b482c247fc5b7de9ae0.ctex"]
 
 [params]
 

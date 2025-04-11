@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv228dvi1x0vo"]
+
+[ext_resource type="Script" uid="uid://3pcq727qsxfk" path="res://wip/wip-hagen/bookshelves/bookshelf.gd" id="1_rikm8"]
+
+[node name="BookshelfArea" type="Area2D" groups=["Magic Bookshelf"]]
+script = ExtResource("1_rikm8")
+book_width = null
+book_interval = null
+book_chance = null
+
+[node name="BookLeavingTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="BookLeavingTimer" to="." method="_on_book_leaving_timer_timeout"]

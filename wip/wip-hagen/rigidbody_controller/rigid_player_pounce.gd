@@ -36,7 +36,6 @@ signal died()
 
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var ground_detect_left: RayCast2D = %GroundDetectLeft
-@onready var ground_detect_middle: RayCast2D = %GroundDetectMiddle
 @onready var ground_detect_right: RayCast2D = %GroundDetectRight
 
 
@@ -103,17 +102,22 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 
 
 func _physics_process(delta: float) -> void:
+	#declare force and set movement direction
 	var force :Vector2 = Vector2.ZERO
 	force.x = Input.get_axis("left", "right")
+	
+	#play animation
 	if !is_zero_approx(force.x):
 		if !animation_player.is_playing():
 			animation_player.play(&"TestLibrary/anim_walk_test")
 	else:
 		if animation_player.is_playing():
 			animation_player.play(&"RESET")
-	#sets rotation target for gravity changes and rotation stabilizer
-	var rotation_target = clampf(calculate_avg_ground_normal(),-slope_angle_max,slope_angle_max)
 	
+	#sets rotation target for gravity changes and rotation stabilizer
+	var rotation_target = clampf(calculate_avg_ground_normal(force.x*-10),-slope_angle_max,slope_angle_max)
+	
+	#reset gravity
 	gravity_scale = default_gravity_scale
 	
 	#changes movement and gravity depending on floor/ground detection
@@ -127,9 +131,9 @@ func _physics_process(delta: float) -> void:
 		current_movement_boost = max(current_movement_boost-landing_boost*landing_boost_duration*delta, 0.0)
 	
 	#Rotates towards the rotation target
-	if rotation > (rotation_target+0.3):
+	if rotation > (rotation_target+0.1):
 		apply_torque(-5010.1*rotation_stabilizer)
-	elif rotation < (rotation_target-0.3):
+	elif rotation < (rotation_target-0.1):
 		apply_torque(5010.1*rotation_stabilizer)
 	
 	
@@ -195,12 +199,10 @@ func die() -> void:
 func calculate_avg_ground_normal(weigh_side:float=0.0)->float:
 	var avg_angle:float=0.0
 	if ground_detect_left.is_colliding():
-		avg_angle += ground_detect_left.get_collision_normal().angle_to(Vector2.UP)*(-1)*minf(weigh_side, -1.0)
-	if ground_detect_middle.is_colliding():
-		avg_angle += ground_detect_middle.get_collision_normal().angle_to(Vector2.UP)
+		avg_angle += ground_detect_left.get_collision_normal().angle_to(Vector2.UP)*(-1)*minf(-1+weigh_side, -1.0)
 	if ground_detect_right.is_colliding():
-		avg_angle += ground_detect_right.get_collision_normal().angle_to(Vector2.UP)*maxf(weigh_side, 1.0)
-	#avg_angle -= rotation
+		avg_angle += ground_detect_right.get_collision_normal().angle_to(Vector2.UP)*maxf(1+weigh_side, 1.0)
+	avg_angle -= rotation
 	avg_angle /= 3+abs(weigh_side)
 	return -avg_angle
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8wd5nunxcrau"
-path="res://.godot/imported/Cat-2-Idle.png-2d34075cd212429cdc4c9c60faf67890.ctex"
+path="res://.godot/imported/Cat-2-Idle.png-03afec79c8755bbf2759fa7516630f38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wip/wip-hagen/rigidbody_controller/Cat-2/Cat-2-Idle.png"
-dest_files=["res://.godot/imported/Cat-2-Idle.png-2d34075cd212429cdc4c9c60faf67890.ctex"]
+source_file="res://wip/wip-hagen/rigidbody_controller/cat-2/Cat-2-Idle.png"
+dest_files=["res://.godot/imported/Cat-2-Idle.png-03afec79c8755bbf2759fa7516630f38.ctex"]
 
 [params]
 

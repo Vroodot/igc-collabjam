@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dqjgjkckb4qo0"]
 
-[ext_resource type="Texture2D" uid="uid://mdmf0buts58i" path="res://wip/wip-hagen/rigidbody_controller/Tiles/Prototype_Tileset_16x16.png" id="1_hhfwa"]
+[ext_resource type="Texture2D" uid="uid://mdmf0buts58i" path="res://wip/wip-hagen/rigidbody_controller/tiles/Prototype_Tileset_16x16.png" id="1_hhfwa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_as7fs"]
 texture = ExtResource("1_hhfwa")

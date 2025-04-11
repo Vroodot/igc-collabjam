@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://xvme4orw3dne"]
 
 [ext_resource type="Script" uid="uid://bfkotuoyyfe4u" path="res://wip/wip-hagen/rigidbody_controller/rigid_player.gd" id="1_nywrp"]
-[ext_resource type="Texture2D" uid="uid://cp0we82yaed2v" path="res://wip/wip-hagen/rigidbody_controller/Cat-2/Cat-2-Walk.png" id="2_nywrp"]
+[ext_resource type="Texture2D" uid="uid://cp0we82yaed2v" path="res://wip/wip-hagen/rigidbody_controller/cat-2/Cat-2-Walk.png" id="2_nywrp"]
 [ext_resource type="Script" uid="uid://cxdgknfrd5ist" path="res://wip/wip-staging/mechanics-prototype/interaction_detector.gd" id="3_nywrp"]
+
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nywrp"]
 friction = 0.5

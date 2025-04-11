@@ -44,6 +44,10 @@ folder_colors={
 "res://wip/wip-staging/Tower/": "yellow"
 }
 
+[global_group]
+
+"Magic Bookshelf"="Bookshelves that store and can be used as targets by flying books"
+
 [input]
 
 up={

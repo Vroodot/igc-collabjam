@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dthb10oake1k"
-path="res://.godot/imported/Cat-2-Meow.png-6ace999d62d5f3e30756674484ca8c05.ctex"
+path="res://.godot/imported/Cat-2-Meow.png-c07a3790d56b930233fdd53e6cee3464.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wip/wip-hagen/rigidbody_controller/Cat-2/Cat-2-Meow.png"
-dest_files=["res://.godot/imported/Cat-2-Meow.png-6ace999d62d5f3e30756674484ca8c05.ctex"]
+source_file="res://wip/wip-hagen/rigidbody_controller/cat-2/Cat-2-Meow.png"
+dest_files=["res://.godot/imported/Cat-2-Meow.png-c07a3790d56b930233fdd53e6cee3464.ctex"]
 
 [params]
 
