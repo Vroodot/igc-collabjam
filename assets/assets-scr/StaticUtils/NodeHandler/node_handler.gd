@@ -113,3 +113,10 @@ static func get_farthest_node_by_distance(from: Vector2, nodes: Array = [], min_
 
 	return farthest
 #endregion
+
+
+static func get_scene_owner(check_from_node:Node)->Node:
+	if check_from_node.owner:
+		return get_scene_owner(check_from_node.owner)
+	else:
+		return check_from_node

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bunh2nx5ll2ym"]
+
+[ext_resource type="PackedScene" uid="uid://b3b7i0ka1bs82" path="res://wip/wip-hagen/library_ladder.tscn" id="1_qjrl6"]
+[ext_resource type="PackedScene" uid="uid://bo1xeylmqo7xt" path="res://main/Player/pounce_player.tscn" id="2_ykqom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_573d0"]
+size = Vector2(1266, 78)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(553, 631)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 29)
+shape = SubResource("RectangleShape2D_573d0")
+debug_color = Color(0.108643, 0.149607, 0.15625, 1)
+
+[node name="LibraryLadder" parent="." node_paths=PackedStringArray("rungs", "ladder_mid_parts", "rail_mid_parts") instance=ExtResource("1_qjrl6")]
+position = Vector2(699, 627)
+rungs = [NodePath("LadderBody/LadderRung"), NodePath("LadderBody/LadderRung2"), NodePath("LadderBody/LadderRung3"), NodePath("LadderBody/LadderRung4"), NodePath("LadderBody/LadderRung5"), NodePath("LadderBody/LadderRung6"), NodePath("LadderBody/LadderRung7"), NodePath("LadderBody/LadderRung8")]
+ladder_mid_parts = [NodePath("LadderSides/LadderMiddle"), NodePath("LadderSides/LadderMiddle2"), NodePath("LadderSides/LadderMiddle3"), NodePath("LadderSides/LadderMiddle4")]
+rail_mid_parts = [NodePath("RailContainer/RailMiddle"), NodePath("RailContainer/LadderMiddle2"), NodePath("RailContainer/LadderMiddle3"), NodePath("RailContainer/LadderMiddle4"), NodePath("RailContainer/LadderMiddle5"), NodePath("RailContainer/LadderMiddle6"), NodePath("RailContainer/LadderMiddle7"), NodePath("RailContainer/LadderMiddle8"), NodePath("RailContainer/LadderMiddle9"), NodePath("RailContainer/LadderMiddle10"), NodePath("RailContainer/LadderMiddle11"), NodePath("RailContainer/LadderMiddle12"), NodePath("RailContainer/LadderMiddle13")]
+resistance = 0.6
+rail_friction = 7.0
+height_factor = 4.55
+step_distance = 91.59
+handle_position = 0.198
+rail_length_factor = 13.86
+ladder_position = 0.186
+
+[node name="PouncingCat" parent="." instance=ExtResource("2_ykqom")]
+position = Vector2(257, 532)

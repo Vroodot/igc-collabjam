@@ -1,10 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnh2ueqjuw3nx"]
+[gd_scene load_steps=3 format=3 uid="uid://cnh2ueqjuw3nx"]
 
 [ext_resource type="PackedScene" uid="uid://dwonll6lvlecc" path="res://main/GameTemplate/scenes/game_scene/levels/level_1.tscn" id="1_b5r0e"]
+[ext_resource type="PackedScene" uid="uid://b3b7i0ka1bs82" path="res://wip/wip-hagen/library_ladder.tscn" id="2_wk0no"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Tower_F1" parent="." instance=ExtResource("1_b5r0e")]
+
+[node name="CameraTarget" parent="Tower_F1/GameSpace/Floor1/RespawnRoom" index="1"]
+position = Vector2(1103.81, -258.006)
+
+[node name="CameraBounds" parent="Tower_F1/GameSpace/Floor1/RespawnRoom" index="2"]
+offset_left = 1007.81
+offset_top = -322.006
+offset_right = 1199.81
+offset_bottom = -194.006
+
+[node name="LibraryLadder" parent="Tower_F1/GameSpace/Lighting" index="5" node_paths=PackedStringArray("rungs", "ladder_mid_parts", "rail_mid_parts") instance=ExtResource("2_wk0no")]
+position = Vector2(1367, -7)
+scale = Vector2(0.35, 0.35)
+rungs = [NodePath("LadderBody/LadderRung"), NodePath("LadderBody/LadderRung2"), NodePath("LadderBody/LadderRung3"), NodePath("LadderBody/LadderRung4"), NodePath("LadderBody/LadderRung5"), NodePath("LadderBody/LadderRung6"), NodePath("LadderBody/LadderRung7")]
+ladder_mid_parts = [NodePath("LadderSides/LadderMiddle"), NodePath("LadderSides/LadderMiddle2"), NodePath("LadderSides/LadderMiddle3"), NodePath("LadderSides/LadderMiddle4")]
+rail_mid_parts = [NodePath("RailContainer/RailMiddle"), NodePath("RailContainer/LadderMiddle2"), NodePath("RailContainer/LadderMiddle3"), NodePath("RailContainer/LadderMiddle4"), NodePath("RailContainer/LadderMiddle5"), NodePath("RailContainer/LadderMiddle6"), NodePath("RailContainer/LadderMiddle7"), NodePath("RailContainer/LadderMiddle8"), NodePath("RailContainer/LadderMiddle9"), NodePath("RailContainer/LadderMiddle10"), NodePath("RailContainer/LadderMiddle11"), NodePath("RailContainer/LadderMiddle12"), NodePath("RailContainer/LadderMiddle13"), NodePath("RailContainer/LadderMiddle14"), NodePath("RailContainer/LadderMiddle15")]
+resistance = 0.8
+rail_friction = 5.0
+max_speed = 1000.0
+height_factor = 4.27
+handle_position = 0.049
+rail_length_factor = 15.0
+ladder_position = 0.04
+
+[node name="PouncingCat" parent="Tower_F1/GameSpace" index="3"]
+position = Vector2(801, -323)
 
 [editable path="Tower_F1"]
 [editable path="Tower_F1/GameSpace/Floor1/RespawnRoom"]

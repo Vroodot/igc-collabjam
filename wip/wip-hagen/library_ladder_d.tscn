@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2xnha3u8jx32"]
+
+[ext_resource type="Script" uid="uid://y1177kb10q04" path="res://wip/wip-hagen/library_ladder.gd" id="1_uysv0"]
+[ext_resource type="Texture2D" uid="uid://vjyt7bqvdca1" path="res://wip/wip-hagen/assets/cat_game_ladder.png" id="2_pk8ah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6fh0"]
+size = Vector2(34.235, 81.68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vyj7"]
+size = Vector2(173.12, 13.28)
+
+[node name="LibraryLadder" type="Node2D" node_paths=PackedStringArray("handle", "rungs", "ladder_mid_parts", "ladder_top", "ladder_bottom", "rail_mid_parts", "rail_left", "rail_right")]
+script = ExtResource("1_uysv0")
+spritesheet = ExtResource("2_pk8ah")
+handle = NodePath("LadderBody/Handle")
+rungs = [NodePath("LadderBody/LadderRung")]
+ladder_mid_parts = [NodePath("LadderMiddle"), NodePath("LadderMiddle2"), NodePath("LadderMiddle3"), NodePath("LadderMiddle4"), NodePath("LadderMiddle5")]
+ladder_top = NodePath("LadderTop")
+ladder_bottom = NodePath("LadderBottom")
+rail_mid_parts = [NodePath("RailContainer/RailMiddle")]
+rail_left = NodePath("RailContainer/RailLeft")
+rail_right = NodePath("RailContainer/RailRight")
+height_factor = 5.5
+rung_density = 1
+handle_position = 0.619
+
+[node name="RailContainer" type="Node2D" parent="."]
+
+[node name="RailLeft" type="Sprite2D" parent="RailContainer"]
+texture_repeat = 2
+position = Vector2(-128, -288)
+texture = ExtResource("2_pk8ah")
+region_enabled = true
+region_rect = Rect2(0, 384, 128, 128)
+
+[node name="RailMiddle" type="Sprite2D" parent="RailContainer"]
+texture_repeat = 2
+position = Vector2(0, -288)
+texture = ExtResource("2_pk8ah")
+region_enabled = true
+region_rect = Rect2(128, 384, 128, 128)
+
+[node name="RailRight" type="Sprite2D" parent="RailContainer"]
+texture_repeat = 2
+position = Vector2(128, -288)
+texture = ExtResource("2_pk8ah")
+region_enabled = true
+region_rect = Rect2(256, 384, 128, 128)
+
+[node name="LadderBody" type="CharacterBody2D" parent="."]
+position = Vector2(0, -256)
+
+[node name="Handle" type="CollisionShape2D" parent="LadderBody"]
+position = Vector2(-128, 33.536)
+shape = SubResource("RectangleShape2D_w6fh0")
+
+[node name="HandleSprite" type="Sprite2D" parent="LadderBody/Handle"]
+texture_filter = 6
+position = Vector2(-16, -8)
+texture = ExtResource("2_pk8ah")
+hframes = 4
+vframes = 4
+frame = 5
+
+[node name="LadderRung" type="CollisionShape2D" parent="LadderBody"]
+position = Vector2(0, 144)
+shape = SubResource("RectangleShape2D_4vyj7")
+one_way_collision = true
+metadata/_edit_group_ = true
+
+[node name="LadderRungSprite" type="Sprite2D" parent="LadderBody/LadderRung"]
+texture_filter = 6
+texture_repeat = 2
+texture = ExtResource("2_pk8ah")
+hframes = 2
+vframes = 4
+
+[node name="LadderTop" type="Sprite2D" parent="."]
+texture_filter = 6
+position = Vector2(0, -883.2)
+texture = ExtResource("2_pk8ah")
+hframes = 2
+vframes = 4
+frame = 1
+
+[node name="LadderMiddle" type="Sprite2D" parent="."]
+texture_filter = 6
+position = Vector2(0, -192)
+scale = Vector2(1, 1.1)
+texture = ExtResource("2_pk8ah")
+hframes = 2
+vframes = 4
+frame = 3
+
+[node name="LadderBottom" type="Sprite2D" parent="."]
+texture_filter = 6
+position = Vector2(0, -64)
+texture = ExtResource("2_pk8ah")
+hframes = 2
+vframes = 4
+frame = 5
+
+[node name="LadderMiddle2" type="Sprite2D" parent="."]
+texture_filter = 6
+position = Vector2(0, -332.8)
+scale = Vector2(1, 1.1)
+texture = ExtResource("2_pk8ah")
+hframes = 2
+vframes = 4
+frame = 3
+
+[node name="LadderMiddle3" type="Sprite2D" parent="."]
+texture_filter = 6
+position = Vector2(0, -473.6)
+scale = Vector2(1, 1.1)
+texture = ExtResource("2_pk8ah")
+hframes = 2
+vframes = 4
+frame = 3
+
+[node name="LadderMiddle4" type="Sprite2D" parent="."]
+texture_filter = 6
+position = Vector2(0, -614.4)
+scale = Vector2(1, 1.1)
+texture = ExtResource("2_pk8ah")
+hframes = 2
+vframes = 4
+frame = 3
+
+[node name="LadderMiddle5" type="Sprite2D" parent="."]
+texture_filter = 6
+position = Vector2(0, -755.2)
+scale = Vector2(1, 1.1)
+texture = ExtResource("2_pk8ah")
+hframes = 2
+vframes = 4
+frame = 3

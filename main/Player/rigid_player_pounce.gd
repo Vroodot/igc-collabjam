@@ -90,15 +90,27 @@ func _ready() -> void:
 		6:
 			get_pounce_rotation_input = pounce_rotation_charge_targeting
 
+var previous_velocity:Vector2=Vector2.ZERO
 ##Handles wall/floor detection
 func _integrate_forces(state: PhysicsDirectBodyState2D):
 	on_floor = false
 	on_wall = false
+	var on_ladder :bool=false
 	for i in range(state.get_contact_count()): 
 		if abs(state.get_contact_local_normal(i).angle_to(Vector2.UP)) <= (slope_angle_max*1.2):
 			on_floor = true
+			if state.get_contact_collider_object(i) is LadderBody2D:
+				#HACK this is a terrible workaround to make prevent the player from pushing a library ladder while standing on it
+				on_ladder = true
 		else:
 			on_wall = true
+			
+			var collision_object = state.get_contact_collider_object(i) 
+			if (!on_ladder) and collision_object is LadderBody2D:
+				if abs(state.get_contact_local_normal(i).angle_to(previous_velocity))>(PI*0.5):
+					if abs(previous_velocity.x) > 100:
+						collision_object.velocity.x = clampf(previous_velocity.x*mass*(1-collision_object.resistance),-collision_object.max_speed,collision_object.max_speed)
+	set_previous_velocity.call_deferred()
 
 
 func _physics_process(delta: float) -> void:
@@ -252,25 +264,9 @@ func pounce_rotation_mouse_targeting(delta:float) -> float:
 
 ##Aims pounce by rotating with mouse movement
 func pounce_rotation_mouse_delta(delta:float) -> float:
-	var input :float
-	input = mouse_delta.y *delta *pounce_aim_speed *0.05 *visual_component.scale.x
-	
-	if visual_component.scale.x > 0.0:
-		return clampf(pounce_rotation+input,-max_pounce_angle,-min_pounce_angle)
-	else:
-		return clampf(pounce_rotation+input,min_pounce_angle,max_pounce_angle)
-
+	return 0.0
 func pounce_rotation_mouse_delta_xy(delta:float) -> float:
-	var input :float
-	if abs(mouse_delta.y) > abs(mouse_delta.x):
-		input = mouse_delta.y *delta *pounce_aim_speed *0.05 *visual_component.scale.x
-	else:
-		input = mouse_delta.x *delta *pounce_aim_speed *0.05
-	
-	if visual_component.scale.x > 0.0:
-		return clampf(pounce_rotation+input,-max_pounce_angle,-min_pounce_angle)
-	else:
-		return clampf(pounce_rotation+input,min_pounce_angle,max_pounce_angle)
+	return 0.0
 
 ##Aims pounce with the left and right mouse buttons
 func pounce_rotation_mouse_left_right(delta:float) -> float:
@@ -294,8 +290,11 @@ func pounce_rotation_charge_targeting(delta:float) -> float:
 	else:
 		return rad_to_deg(lerp_angle(deg_to_rad(min_pounce_angle),deg_to_rad(max_pounce_angle),input))
 
-var mouse_delta :Vector2=Vector2.ZERO
 
 
 func update_visual_to_pounce_rotation():
 	visual_component.rotation_degrees = pounce_rotation
+
+
+func set_previous_velocity():
+	previous_velocity=linear_velocity
